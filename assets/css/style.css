@@ -8,3 +8,15 @@ font-size: 70px;
 font-family: Helvetica;
 padding-top: 100px;
 }
+
+body {
+    background-color: rgb(49, 182, 184);
+}
+
+#moodMenu {
+    font-size: 40px;
+}
+
+#submit {
+    margin-left: 35px;
+}
