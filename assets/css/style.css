@@ -16,7 +16,10 @@ body {
 
 #moodMenu {
     font-size: 40px;
+    margin-left: 850px;
+    margin-top: 70px;
 }
+
 
 #submit {
     margin-left: 35px;
