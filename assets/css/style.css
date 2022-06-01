@@ -16,15 +16,19 @@ body {
 
 #moodMenu {
     font-size: 40px;
-    margin-left: 850px;
+    margin-left: 700px;
     margin-top: 70px;
 }
 
 
 #submit {
-    margin-left: 35px;
+    margin-left: 45px;
 }
 
 #moodHistory {
     font-size: 40px;
+}
+
+#history {
+    list-style: none;
 }
