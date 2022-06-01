@@ -15,10 +15,10 @@
     <h1> Mood Matcher </h1>
 </header>   
 
-
-<section id="moodmenu" class="menu">
-    Select a mood
-    <select>
+<section>
+    <section id="moodmenu" class="menu">    
+     Select a mood
+     <select>
         Angry
         Hungry
         Happy
@@ -27,11 +27,21 @@
         Stressed
         Adventurous
         Calm
-    </select>
+        </select>
+    </section>
 
+    <section id="moodHistory" class="savedList">
+    Past Mood History
+    <li id="history">
 
+    </li>
+    </section>
 </section>
 
+<section id="playlistPlaceholder" class="Playlist"> 
+<iframe id="Player" width="100%" height="600" scrolling="no" frameborder="no" allow="autoplay"></iframe>
+
+</section>
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
