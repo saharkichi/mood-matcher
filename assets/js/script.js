@@ -1,35 +1,66 @@
 let moodMenu = document.getElementById("moodMenu")
 let submit = document.getElementById("submit")
 
+let lat = ""
+let lon = ""
 
 Search = function(){
-moodMenu.setAttribute("style", "margin-left: 40px;");
-getPlayer();
-
+    moodMenu.setAttribute("style", "margin-left: 40px;");
+    getLocation();
 }
 
-// Will create souncloud player
-function getPlayer() {
-    let player = $(".Playlist");
-    
-    if(!player.children().length) {
-        let frame = $("<iframe>");
-
-        let mood = $("#moods");
-        console.log(mood[0].value); 
-
-        let angry = "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/127755258&color=%23948464&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"
-        frame.attr("src", angry);
-        frame.attr("width", "100%");
-        frame.attr("height", "300");
-        player.append(frame);
-    } else {
-        player.children().eq(0).remove();
+// Gets location from browser
+function getLocation() {
+    navigator.geolocation.getCurrentPosition(getPosition);
+    function getPosition(position) {
+        lat = position.coords.latitude;
+        lon = position.coords.longitude;
+        getMapsApi();
+        getMap();
     }
+}
+
+function getMapsApi() {
+    moodLocationTypes = ["gym","restaurant","park","lodging","night_club","spa","casino","bar","church"];
+    moodType =  moodLocationTypes[$("#moods").val()];
+    console.log(moodType);
+    
+    const proxyurl = "https://cors-anywhere.herokuapp.com/";
+    var requestUrl = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${lat}%2C${lon}&radius=50000&type=${moodType}&key=AIzaSyDtsmRas9J20TKmYQiVSW8XvWCNY7IIsYE`;
+  
+    fetch(proxyurl + requestUrl)
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (data) {
+        console.log(data);
+        populateLocations(data);
+    })
+      .catch( function (error) {
+          console.log(error);
+      })
+}
+
+function populateLocations(data) {
 
 }
 
+// Will create map of your location
+function getMap() {
+    let mapBox = $("#mapsPlaceHolder");
+    
+    if(!mapBox.children().length) {
+        let frame = $("<iframe>");
+        let map = `https://www.google.com/maps/embed/v1/view?key=AIzaSyDtsmRas9J20TKmYQiVSW8XvWCNY7IIsYE&center=${lat},${lon}&zoom=12`
+        frame.attr("src", map);
+        frame.attr("width", "500");
+        frame.attr("height", "500");
+        mapBox.append(frame);
+    } else {
+        mapBox.children().eq(0).remove();
+        getMap();
+    }
+}
 
 
 submit.addEventListener("click", Search)
-
