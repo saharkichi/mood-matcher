@@ -11,11 +11,11 @@
     <title>Mood Matcher</title>
 </head>
 <body>
-<header style="background-image: url('https://c4.wallpaperflare.com/wallpaper/425/98/487/abstraction-music-mood-art-wallpaper-preview.jpg');">
+    <header style="background-image: url('https://c4.wallpaperflare.com/wallpaper/425/98/487/abstraction-music-mood-art-wallpaper-preview.jpg');">  
     <h1> Mood Matcher </h1>
 </header>   
 
-<section>
+<section id="parent">
 <section id="moodMenu" class="menu">
     Select a Mood
     <br>
@@ -44,9 +44,20 @@
         </div>
     </section>
 </section>
-<section id="playlistPlaceholder" class="Playlist"></section>
 
+    <section id="parent-2">
+    <section id="playlistPlaceholder" class="Playlist">
+    Playlist
+    <section id="mapsPlaceholder" class="Maps"></section>
+    Locations
+    <br> 
+    <section id="addressPlaceholder" class="addresses">
+    List of Addresses
+    <li id="addressList">
 
+    </li>
+    </section>
+    
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>

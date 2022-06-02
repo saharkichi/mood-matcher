@@ -62,4 +62,5 @@ function getMap() {
     }
 }
 
+
 submit.addEventListener("click", Search)
