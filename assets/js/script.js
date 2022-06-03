@@ -11,6 +11,7 @@ Search = function(){
     playlistheader.textContent="Playlist"; 
     getLocation();
     MusicFetcher();
+    saveMood();
     
 }
 
@@ -29,7 +30,6 @@ function getLocation() {
 function getMapsApi() {
     moodLocationTypes = ["gym","restaurant","park","lodging","night_club","spa","casino","bar","church"];
     moodType =  moodLocationTypes[$("#moods").val()];
-    console.log(moodType);
     
     const proxyurl = "https://cors-anywhere.herokuapp.com/";
     let requestUrl = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${lat}%2C${lon}&radius=50000&type=${moodType}&key=AIzaSyDtsmRas9J20TKmYQiVSW8XvWCNY7IIsYE`;
@@ -39,8 +39,8 @@ function getMapsApi() {
         return response.json();
       })
       .then(function (data) {
-        console.log(data);
         populateLocations(data);
+        saveMood();
     })
       .catch( function (error) {
           console.log(error);
@@ -50,28 +50,29 @@ function getMapsApi() {
 // Displays locations based on mood
 function populateLocations(data) {
     let address = $("#addressList");
-    console.log(address);
-    for(let i = 0; i < data.results.length && i < 8; i++) {
-        console.log(data.results[i].name);
-        
-        let listItem = $("<li>");
-        address.append(listItem);
-        let name = $("<p>");
-        name.text(data.results[i].name);
-        listItem.append(name);
-        let location = $("<p>");
-        location.text(`Located at: ${data.results[i].vicinity}`);
-        listItem.append(location);
-        let rating = $("<p>");
-        rating.text(`Rating: ${data.results[i].rating}`);
-        listItem.append(rating);
+    if(!address.children().length) {
+        for(let i = 0; i < data.results.length; i++) {
+            let listItem = $("<li>");
+            address.append(listItem);
+            let name = $("<p>");
+            name.text(data.results[i].name);
+            listItem.append(name);
+            let location = $("<p>");
+            location.text(`Located at: ${data.results[i].vicinity}`);
+            listItem.append(location);
+            let rating = $("<p>");
+            rating.text(`Rating: ${data.results[i].rating}`);
+            listItem.append(rating);
+        }
+    } else {
+        address.children().remove();
+        populateLocations(data);
     }
 }
 
 // Will create map of your location
 function getMap() {
     let mapBox = $("#mapsPlaceholder");
-    console.log(mapBox);
     if(!mapBox.children().length) {
         let frame = $("<iframe>");
         let map = `https://www.google.com/maps/embed/v1/view?key=AIzaSyDtsmRas9J20TKmYQiVSW8XvWCNY7IIsYE&center=${lat},${lon}&zoom=12`
@@ -91,7 +92,6 @@ function MusicFetcher() {
 
 PlaylistTypes = ["angry","hungry","calm","tired","happy","sad","adventurous","party","stressed"];
 Playlist = PlaylistTypes[$("#moods").val()];
-console.log(Playlist);
     const options = {
 	method: 'GET',
 	headers: {
@@ -112,12 +112,10 @@ fetch(`https://spotify23.p.rapidapi.com/search/?q=${Playlist}&type=playlists&off
     getPlayer(playlistoutput);
 })
 	.catch(err => console.error(err));
-
-    
-
 };
-//Creates music player 
 
+
+//Creates music player 
 function getPlayer(playlist) {
     let Player = $("#player");
     
@@ -134,10 +132,56 @@ function getPlayer(playlist) {
     }
 }
 
-
+// Checks if local storage has any items and puts them in an array
+function initiateStorage() {
+    if(localStorage.getItem("previousMoods") !== null) {
+        previousMoods = JSON.parse(localStorage.getItem("previousMoods"));
+    } else {
+        localStorage.setItem("previousMoods", JSON.stringify(previousMoods));
+    }
+    initiatePrev();
+}
+ 
+// Populates mood history
+function initiatePrev() {
+    let i = 0;
+    let moodHistory = $("#history");
+    while(i < previousMoods.length && i < 6) {
+        let prev = $("<p>");
+        prev.text(`${previousMoods[i]}`);
+        moodHistory.append(prev);
+        i++;
+    }
+}
+ 
+// Saves mood to local storage and updates list
+function saveMood() {
+    if(localStorage.getItem("previousMoods") !== null) {
+        previousMoods = JSON.parse(localStorage.getItem("previousMoods"));
+    }
+    let moods = ["Angry","Hungry","Calm","Tired","Happy","Sad","Adventurous","Social","Stressed"]
+    let mood = `Your mood was ${moods[$("#moods").val()]} on ${moment()}`;
+    previousMoods.reverse();
+    previousMoods.push(mood);
+    previousMoods.reverse();
+    localStorage.setItem("previousMoods", JSON.stringify(previousMoods));
+    updatePrev();
+}
+ 
+// Creates a new entry if less than 5
+// Otherwise it renames the entries
+function updatePrev() {
+    let moodHistory = $("#history");
+    if(previousMoods.length < 6) {
+        let prev = $("<p>");
+        prev.text(`${previousMoods[0]}`);
+        moodHistory.append(prev);
+    } else {
+        for(let i = 0; i < 6; i++) {
+            moodHistory.children().eq(i).text(previousMoods[i]);
+        }
+    }    
+}
 
 submit.addEventListener("click", Search)
-
-
-
-
+initiateStorage();
