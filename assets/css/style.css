@@ -104,3 +104,7 @@ padding-top: 100px;
     font-size: 40px;
 }
 
+#urlocation {
+    display: none;
+    text-decoration: underline;
+}

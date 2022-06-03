@@ -3,10 +3,11 @@ let submit = document.getElementById("submit")
 let playlistheader = document.getElementById("playlistPlaceholder")
 let lat = ""
 let lon = ""
-let previousMoods = [];
+let previousMoods = []
+let urlocation = document.getElementById("urlocation")
 
 Search = function(){
-    moodMenu.setAttribute("style", "margin-left: 40px;");
+    urlocation.setAttribute("style", "display: block;");
     playlistheader.textContent="Playlist"; 
     getLocation();
     MusicFetcher();
