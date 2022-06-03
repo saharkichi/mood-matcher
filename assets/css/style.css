@@ -23,28 +23,21 @@ color: antiquewhite;
 min-height: 100px;
 font-size: 70px;
 font-family: Helvetica;
-padding-top: 100px;
-
+padding-top: 100px;    
 }
-
 
 #submit {
     color: black;
     margin-left: 45px;
 }
 
-    
     #moodMenu {
         color: antiquewhite;
         text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
         font-size: 40px;
-        margin-left: 1000px;
         margin-top: 70px;
-    }
-    
-    #submit {
-        color: black;
-        margin-left: 45px;
+        align-items: center;
+        text-align: center;
     }
     
     #moodHistory {
@@ -62,30 +55,6 @@ padding-top: 100px;
         text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
         list-style: none;
     }
-    
-    #parent {
-        color: antiquewhite;
-        text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-    }
-    
-    #parent-2 {
-        color: antiquewhite;
-        text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
-        align-items: center;
-        text-align: center;
-        font-size: 40px;
-    }
-    
-
-#history {
-    color: antiquewhite;
-    text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
-    list-style: none;
-}
 
 #parent {
     color: antiquewhite;
@@ -104,3 +73,26 @@ padding-top: 100px;
     font-size: 40px;
 }
 
+
+/* Small smartphones - all elements refactor to smaller size  */
+@media screen and (max-width: 576px) {
+    #parent, #parent-2, #menu, #moods, #moodHistory, #submit, #moodMenu, #history {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+/* Tablets - header changes color and font size */
+@media screen and (max-width: 992px) {
+    #parent, #parent-2, #menu, #moods, #moodHistory, #submit, #moodMenu, #history {
+        display: flex;
+        flex-direction: column;
+    }
+}
+/* large smartphones - body wraps */
+@media screen and (max-width: 768px) {
+    #parent, #parent-2, #menu, #moods, #moodHistory, #submit, #moodMenu, #history {
+        display: flex;
+        flex-direction: column;
+    }
+}
