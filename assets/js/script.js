@@ -1,12 +1,15 @@
 let moodMenu = document.getElementById("moodMenu")
 let submit = document.getElementById("submit")
-
+let playlistheader = document.getElementById("playlistPlaceholder")
 let lat = ""
 let lon = ""
 
 Search = function(){
     moodMenu.setAttribute("style", "margin-left: 40px;");
+    playlistheader.textContent="Playlist"; 
     getLocation();
+    MusicFetcher();
+    
 }
 
 // Gets location from browser
@@ -62,5 +65,53 @@ function getMap() {
     }
 }
 
+//Fetches Music playlist data
+function MusicFetcher() {
+
+PlaylistTypes = ["angry","hungry","calm","tired","happy","sad","adventurous","party","stressed"];
+Playlist = PlaylistTypes[$("#moods").val()];
+console.log(Playlist);
+    const options = {
+	method: 'GET',
+	headers: {
+		'X-RapidAPI-Host': 'spotify23.p.rapidapi.com',
+		'X-RapidAPI-Key': 'ba57859892msh1281e4ea9521f97p11b86fjsn22579b138546'
+	}
+};
+fetch(`https://spotify23.p.rapidapi.com/search/?q=${Playlist}&type=playlists&offset=0&limit=1&numberOfTopResults=1`, options)
+	.then(function (response) {
+        return response.json();
+    })
+.then(function (data) {
+    console.log(data)
+    getPlayer();
+})
+	.catch(err => console.error(err));
+
+    
+
+};
+//Creates music player 
+
+function getPlayer() {
+    let Player = $("#player");
+    
+    if(!Player.children().length) {
+        let frame = $("<iframe>");
+        let player = `https://open.spotify.com/embed/playlist/7Dvv3NS3Eus6HuDzlxurvG?utm_source=generator`
+        frame.attr("src", player);
+        frame.attr("width", "50%");
+        frame.attr("height", "380");
+        Player.append(frame);
+    } else {
+        Player.children().eq(0).remove();
+        getPlayer();
+    }
+}
+
+
 
 submit.addEventListener("click", Search)
+
+
+
