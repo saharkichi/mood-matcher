@@ -50,7 +50,7 @@ function getMapsApi() {
 function populateLocations(data) {
     let address = $("#addressList");
     console.log(address);
-    for(let i = 0; i < data.results.length; i++) {
+    for(let i = 0; i < data.results.length && i < 8; i++) {
         console.log(data.results[i].name);
         
         let listItem = $("<li>");
@@ -104,7 +104,11 @@ fetch(`https://spotify23.p.rapidapi.com/search/?q=${Playlist}&type=playlists&off
     })
 .then(function (data) {
     console.log(data)
-    getPlayer();
+    let playlistoutput = data.playlists.items[0].data.uri;
+    playlistoutput = playlistoutput.split(":");
+    playlistoutput = playlistoutput[2];
+    console.log(playlistoutput);
+    getPlayer(playlistoutput);
 })
 	.catch(err => console.error(err));
 
@@ -113,19 +117,19 @@ fetch(`https://spotify23.p.rapidapi.com/search/?q=${Playlist}&type=playlists&off
 };
 //Creates music player 
 
-function getPlayer() {
+function getPlayer(playlist) {
     let Player = $("#player");
     
     if(!Player.children().length) {
         let frame = $("<iframe>");
-        let player = `https://open.spotify.com/embed/playlist/7Dvv3NS3Eus6HuDzlxurvG?utm_source=generator`
+        let player = `https://open.spotify.com/embed/playlist/${playlist}?utm_source=generator`
         frame.attr("src", player);
         frame.attr("width", "50%");
         frame.attr("height", "380");
         Player.append(frame);
     } else {
         Player.children().eq(0).remove();
-        getPlayer();
+        getPlayer(playlist);
     }
 }
 
