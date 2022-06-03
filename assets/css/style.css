@@ -74,6 +74,12 @@ padding-top: 100px;
 }
 
 
+#urlocation {
+    display: none;
+    text-decoration: underline;
+}
+
+
 /* Small smartphones - all elements refactor to smaller size  */
 @media screen and (max-width: 576px) {
     #parent, #parent-2, #menu, #moods, #moodHistory, #submit, #moodMenu, #history {
@@ -96,3 +102,4 @@ padding-top: 100px;
         flex-direction: column;
     }
 }
+
