@@ -28,10 +28,10 @@ function getLocation() {
 
 // Gets data from google maps
 function getMapsApi() {
-    moodLocationTypes = ["gym","restaurant","park","lodging","night_club","spa","casino","bar","church"];
+    moodLocationTypes = ["gym","restaurant","park","lodging","night_club","spa","bicycle_store","bar","church"];
     moodType =  moodLocationTypes[$("#moods").val()];
     
-    const proxyurl = "https://cors-anywhere.herokuapp.com/";
+    const proxyurl = "https://cors-ps.herokuapp.com/";
     let requestUrl = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${lat}%2C${lon}&radius=50000&type=${moodType}&key=AIzaSyDtsmRas9J20TKmYQiVSW8XvWCNY7IIsYE`;
   
     fetch(proxyurl + requestUrl)
