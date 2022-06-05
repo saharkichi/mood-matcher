@@ -5,12 +5,14 @@ let lat = ""
 let lon = ""
 let previousMoods = []
 let urlocation = document.getElementById("urlocation")
+let suggested = document.getElementById("suggested")
 
 
 // Main search function
 
 Search = function(){
     urlocation.setAttribute("style", "display: block;");
+    suggested.setAttribute("style", "display: block;");
     playlistheader.textContent="Playlist"; 
     getLocation();
     MusicFetcher();
@@ -191,6 +193,7 @@ function clearHistory() {
     let clear = $("#clear");
     clear.click(() => {
         localStorage.removeItem("previousMoods");
+        location.reload();
     });
 }
 
