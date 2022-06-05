@@ -2,106 +2,111 @@
 
 
 .blink {
-animation: blinker 2s step-start infinite;
-}
-
-@keyframes blinker {
-50% {
-  opacity: 0;
-}
-}
-
-h1 {
-align-items: center;
-text-align: center;
-text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
-color: antiquewhite;
-min-height: 100px;
-font-size: 70px;
-font-family: Helvetica;
-padding-top: 100px;    
-}
-
-#submit {
-    color: black;
-    margin-left: 45px;
-}
-
-    #moodMenu {
-        color: antiquewhite;
-        text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
-        font-size: 40px;
-        margin-top: 70px;
-        align-items: center;
-        text-align: center;
+    animation: blinker 2s step-start infinite;
     }
     
-    #moodHistory {
-        color: rgb(255, 0, 0);
-        text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
-        min-height: 100px;
-        font-size: 20px;
-        font-family: Helvetica;
-        padding-top: 100px;  
-  
+    @keyframes blinker {
+    50% {
+      opacity: 0;
+    }
     }
     
-    #history, #addressList {
-        color: antiquewhite;
-        text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
-        list-style: none;
-        font-size: 15px;
-    }
-
-#parent {
-    color: antiquewhite;
-    text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-}
-
-#parent-2 {
-    color: rgb(255, 0, 0);
-    text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+    h1 {
     align-items: center;
     text-align: center;
-    font-size: 20px;
-}
-
-#urlocation {
-    display: none;
-    text-decoration: underline;
-}
-
-footer {
-color: white;
-font-family: Helvetica;    
-margin-top: 500px;
-margin-left: 50px;
-
-}
-/* Small smartphones - all elements refactor to smaller size  */
-@media screen and (max-width: 576px) {
-    #parent, #parent-2, #menu, #moods, #moodHistory, #submit, #moodMenu, #history {
-        display: flex;
-        flex-direction: column;
+    text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+    color: antiquewhite;
+    min-height: 100px;
+    font-size: 70px;
+    font-family: Helvetica;
+    padding-top: 100px;    
     }
-}
-
-/* Tablets - header changes color and font size */
-@media screen and (max-width: 992px) {
-    #parent, #parent-2, #menu, #moods, #moodHistory, #submit, #moodMenu, #history {
-        display: flex;
-        flex-direction: column;
+    
+    #submit {
+        color: black;
+        margin-left: 2px;
     }
-}
-/* large smartphones - body wraps */
-@media screen and (max-width: 768px) {
-    #parent, #parent-2, #menu, #moods, #moodHistory, #submit, #moodMenu, #history {
-        display: flex;
-        flex-direction: column;
+    #suggested{
+        display: none;
     }
-}
-
+        #moodMenu {
+            color: antiquewhite;
+            text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+            font-size: 40px;
+            margin-top: 70px;
+            margin-left: 20px;
+            align-items: center;
+            text-align: center;
+        }
+        
+        #moodHistory {
+            color: rgb(255, 0, 0);
+            text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+            min-height: 100px;
+            font-size: 20px;
+            font-family: Helvetica;
+            padding-top: 100px;  
+      
+        }
+        
+        #history, #addressList {
+            color: antiquewhite;
+            text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+            list-style: none;
+            font-size: 15px;
+            margin-right: 40px;
+        }
+    
+    #parent {
+        color: antiquewhite;
+        text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+    
+    #parent-2 {
+        color: rgb(255, 0, 0);
+        text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+        align-items: center;
+        text-align: center;
+        font-size: 20px;
+    }
+    
+    #urlocation {
+        display: none;
+        text-decoration: underline;
+    }
+    
+    footer {
+    color: white;
+    font-family: Helvetica;    
+    margin-top: 350px;
+    margin-left: 50px;
+    
+    }
+    /* Small smartphones - all elements refactor to smaller size  */
+    @media screen and (max-width: 576px) {
+        #parent, #parent-2, #menu, #moods, #moodHistory, #submit, #moodMenu, #history {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+    
+    /* Tablets - header changes color and font size */
+    @media screen and (max-width: 992px) {
+        #parent, #parent-2, #menu, #moods, #moodHistory, #submit, #moodMenu, #history {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+    /* large smartphones - body wraps */
+    @media screen and (max-width: 768px) {
+        #parent, #parent-2, #menu, #moods, #moodHistory, #submit, #moodMenu, #history {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+    
+    
