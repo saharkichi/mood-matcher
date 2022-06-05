@@ -10,62 +10,71 @@
     <link rel="stylesheet" href="./assets/css/style.css">
     <title>Mood Matcher</title>
 </head>
-<body style="background-image: url('https://c4.wallpaperflare.com/wallpaper/425/98/487/abstraction-music-mood-art-wallpaper-preview.jpg');">
-<header>  
+
+<body style="background-image:url(https://images.unsplash.com/photo-1541701494587-cb58502866ab?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8YWJzdHJhY3QlMjBjb2xvdXJ8ZW58MHx8MHx8&w=1000&q=80);
+height: 60%;
+background-size:cover;">
+    
+    <header>  
     <div class="blink"><h1>Mood Matcher</h1> </div>
-</header>   
+    </header>   
 
-<section id="parent">
-<section id="moodMenu" class="menu">
-    Select a Mood
-    <br>
-    <select id="moods">
-        <option></option>
-        <option value="0">Angry</option>
-        <option value="1">Hungry</option>
-        <option value="2">Calm</option>
-        <option value="3">Tired</option>
-        <option value="4">Happy</option>
-        <option value="5">Sad</option>
-        <option value="6">Adventurous</option>
-        <option value="7">Social</option>
-        <option value="8">Stressed</option>
-    </select>
-    <br>
-    <button id="submit">Submit</button>
-</section>
+        <section id="parent">
+            <section id="moodMenu" class="menu">
+                Select a Mood
+                    <br>
+                        <select id="moods">
+                        <option></option>
+                        <option value="0">Angry</option>
+                        <option value="1">Hungry</option>
+                        <option value="2">Calm</option>
+                        <option value="3">Tired</option>
+                        <option value="4">Happy</option>
+                        <option value="5">Sad</option>
+                        <option value="6">Adventurous</option>
+                        <option value="7">Social</option>
+                        <option value="8">Stressed</option>
+                        </select>
+                    <br>
+                    <button id="submit">Submit</button>
+            </section>
 
-    <section id="moodHistory" class="savedList">
-        <div class="d-flex flex-row-reverse">
-            <div class="p-2">Past Mood History
-    <ul id="history">
+            <section id="moodHistory" class="savedList">
+                    <div class="d-flex flex-row-reverse">
+                    <div class="p-2">Past Mood History
+                        <ul id="history">
 
-    </ul>
-        </div>
-    </section>
-</section>
-
-    <section id="parent-2">
-        <section id="playlistPlaceholder" class="Playlist"></section>
-        <section id="player"></section>
-         <p id="urlocation">Your Location</p>
-        <section id="mapsPlaceholder" class="Maps"></section>
-         Suggested Locations
-        <br> 
-        <section id="addressPlaceholder" class="addresses">
-             List of Addresses
-         <ul id="addressList">
-
-    </ul>   
+                        </ul>
+                    </div>
+            </section>
         </section>
 
-    </section>
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
-  <script src="./assets/js/script.js"></script>
+        <section id="parent-2">
+            <section id="playlistPlaceholder" class="Playlist"></section>
+                <section id="player"></section>
+                    
+                        <h2 id="urlocation">Your Location</h2>
+                        <section id="mapsPlaceholder" class="Maps"></section>
+                            Suggested Locations
+                            <br> 
+                        <section id="addressPlaceholder" class="addresses">
+                            List of Addresses
+                            <ul id="addressList">
+
+                            </ul>   
+                        </section>
+        </section>
+   
+
+<footer>
+    <p>Made by Abdalla, Link & Sahar &#10084;&#65039; </p> 
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
+<script src="./assets/js/script.js"></script>
 </body>
 </html>

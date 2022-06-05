@@ -6,6 +6,9 @@ let lon = ""
 let previousMoods = []
 let urlocation = document.getElementById("urlocation")
 
+
+// Main search function
+
 Search = function(){
     urlocation.setAttribute("style", "display: block;");
     playlistheader.textContent="Playlist"; 
@@ -182,6 +185,7 @@ function updatePrev() {
         }
     }    
 }
+// Event Listeners
 
 submit.addEventListener("click", Search)
 initiateStorage();

@@ -1,9 +1,5 @@
 
-body {
-    image-rendering: auto;
-    image-rendering: crisp-edges;
-    image-rendering: pixelated;
-}
+
 
 .blink {
 animation: blinker 2s step-start infinite;
@@ -79,7 +75,13 @@ padding-top: 100px;
     text-decoration: underline;
 }
 
+footer {
+color: white;
+font-family: Helvetica;    
+margin-top: 500px;
+margin-left: 50px;
 
+}
 /* Small smartphones - all elements refactor to smaller size  */
 @media screen and (max-width: 576px) {
     #parent, #parent-2, #menu, #moods, #moodHistory, #submit, #moodMenu, #history {
