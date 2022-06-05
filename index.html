@@ -19,6 +19,7 @@ background-size:cover;">
     <div class="blink"><h1>Mood Matcher</h1> </div>
     </header>   
 
+
         <section id="parent">
             <section id="moodMenu" class="menu">
                 Select a Mood
@@ -42,30 +43,27 @@ background-size:cover;">
             <section id="moodHistory" class="savedList">
                     <div class="d-flex flex-row-reverse">
                     <div class="p-2">Past Mood History
+                      <button id="clear">Clear History</button>
                         <ul id="history">
 
                         </ul>
                     </div>
+                    </div>
             </section>
-        </section>
+          </section>
 
-        <section id="parent-2">
-            <section id="playlistPlaceholder" class="Playlist"></section>
+         <section id="parent-2">
+                <section id="playlistPlaceholder" class="Playlist"></section>
                 <section id="player"></section>
-                    
-                        <h2 id="urlocation">Your Location</h2>
-                        <section id="mapsPlaceholder" class="Maps"></section>
-                            Suggested Locations
-                            <br> 
-                        <section id="addressPlaceholder" class="addresses">
-                            List of Addresses
-                            <ul id="addressList">
+                <p id="urlocation">Your Location</p>
+                   <section id="mapsPlaceholder" class="Maps"></section>
+                      Suggested Locations:
+                       <br> 
+                        <ul id="addressList">
+                          </ul>   
+         </section>
 
-                            </ul>   
-                        </section>
-        </section>
    
-
 <footer>
     <p>Made by Abdalla, Link & Sahar &#10084;&#65039; </p> 
 </footer>
@@ -76,5 +74,6 @@ background-size:cover;">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
 <script src="./assets/js/script.js"></script>
+
 </body>
 </html>

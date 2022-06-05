@@ -14,8 +14,6 @@ Search = function(){
     playlistheader.textContent="Playlist"; 
     getLocation();
     MusicFetcher();
-    saveMood();
-    
 }
 
 // Gets location from browser
@@ -30,6 +28,8 @@ function getLocation() {
 }
 
 // Gets data from google maps
+// Matches the mood choice to a type of place
+// Searches for that type of place around user
 function getMapsApi() {
     moodLocationTypes = ["gym","restaurant","park","lodging","night_club","spa","bicycle_store","bar","church"];
     moodType =  moodLocationTypes[$("#moods").val()];
@@ -54,7 +54,7 @@ function getMapsApi() {
 function populateLocations(data) {
     let address = $("#addressList");
     if(!address.children().length) {
-        for(let i = 0; i < data.results.length; i++) {
+        for(let i = 0; i < data.results.length && i < 8; i++) {
             let listItem = $("<li>");
             address.append(listItem);
             let name = $("<p>");
@@ -63,9 +63,11 @@ function populateLocations(data) {
             let location = $("<p>");
             location.text(`Located at: ${data.results[i].vicinity}`);
             listItem.append(location);
-            let rating = $("<p>");
-            rating.text(`Rating: ${data.results[i].rating}`);
-            listItem.append(rating);
+            if(data.results[i].rating !== undefined) {
+                let rating = $("<p>");
+                rating.text(`Rating: ${data.results[i].rating}`);
+                listItem.append(rating);
+            }
         }
     } else {
         address.children().remove();
@@ -107,11 +109,9 @@ fetch(`https://spotify23.p.rapidapi.com/search/?q=${Playlist}&type=playlists&off
         return response.json();
     })
 .then(function (data) {
-    console.log(data)
     let playlistoutput = data.playlists.items[0].data.uri;
     playlistoutput = playlistoutput.split(":");
     playlistoutput = playlistoutput[2];
-    console.log(playlistoutput);
     getPlayer(playlistoutput);
 })
 	.catch(err => console.error(err));
@@ -149,7 +149,7 @@ function initiateStorage() {
 function initiatePrev() {
     let i = 0;
     let moodHistory = $("#history");
-    while(i < previousMoods.length && i < 6) {
+    while(i < previousMoods.length && i < 5) {
         let prev = $("<p>");
         prev.text(`${previousMoods[i]}`);
         moodHistory.append(prev);
@@ -163,7 +163,7 @@ function saveMood() {
         previousMoods = JSON.parse(localStorage.getItem("previousMoods"));
     }
     let moods = ["Angry","Hungry","Calm","Tired","Happy","Sad","Adventurous","Social","Stressed"]
-    let mood = `Your mood was ${moods[$("#moods").val()]} on ${moment()}`;
+    let mood = `${moods[$("#moods").val()]} on ${moment().format("MMM Do, YYYY, hh:mm:ss")}`;
     previousMoods.reverse();
     previousMoods.push(mood);
     previousMoods.reverse();
@@ -175,7 +175,7 @@ function saveMood() {
 // Otherwise it renames the entries
 function updatePrev() {
     let moodHistory = $("#history");
-    if(previousMoods.length < 6) {
+    if(previousMoods.length <= 5) {
         let prev = $("<p>");
         prev.text(`${previousMoods[0]}`);
         moodHistory.append(prev);
@@ -187,5 +187,17 @@ function updatePrev() {
 }
 // Event Listeners
 
-submit.addEventListener("click", Search)
-initiateStorage();
+function clearHistory() {
+    let clear = $("#clear");
+    clear.click(() => {
+        localStorage.removeItem("previousMoods");
+    });
+}
+
+function init() {
+    submit.addEventListener("click", Search)
+    initiateStorage();
+    clearHistory();
+}
+
+init();
